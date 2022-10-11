@@ -1,0 +1,69 @@
+{% extends 'rss/base.html' %}
+
+{% block body %}
+ 
+<br />
+ 
+<form class="form-inline">
+ 
+    <div class="form-group mx-sm-3 mb-2">
+ 
+        <label for="inputPassword2" class="sr-only">Password</label>
+ 
+        <input type="text" class="form-control" placeholder="paste link" name="url">
+ 
+    </div>
+ 
+    <button type="submit" class="btn btn-primary mb-2">Search</button>
+ 
+</form>
+ 
+{% if feed %}
+ 
+<h2>{{ feed.feed.title }}</h2>
+ 
+{% if feed.entries %}
+ 
+{% for entry in feed.entries %}
+ 
+<div class="topic">
+ 
+    <div class="topic-header">
+ 
+        Feed
+    </div>
+ 
+    <div class="topic-body">
+ 
+        <h5 class="topic-title">Headline: {{ entry.title }}</h5>
+ 
+        <p class="topic-text">Description: {{ entry.description }}</p>
+ 
+        <a href="{{ entry.link }}" class="btn btn-primary" target="_blank">Visit Link</a>   
+    </div>
+ 
+</div>
+ 
+<p>{{ entry.published }}</p>
+ 
+ 
+ 
+{% endfor %}
+ 
+{% endif %}
+ 
+{% else %}
+ 
+<br />
+ 
+<p>Input RSS feed in the search box.</p>
+ 
+{% endif %}
+ 
+ 
+ 
+{{ feed2 }}
+ 
+ 
+ 
+{% endblock %}
